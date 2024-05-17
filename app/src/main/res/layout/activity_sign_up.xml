@@ -22,7 +22,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:src="@drawable/icons8_whatsapp" />
+            android:src="@drawable/appicon" />
 
         <EditText
             android:id="@+id/edtuserName"
