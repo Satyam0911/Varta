@@ -29,47 +29,7 @@ import java.util.ArrayList;
 public class ChatAdapter extends RecyclerView.Adapter{
     private static final long MAX_FILE_SIZE = 1111;
 
-    private void downloadAndDisplayFile(String fileUrl, View fileView) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl(fileUrl);
 
-        // Choose a download method based on your needs:
-        // Download file contents as bytes
-    
-    storageRef.getBytes(MAX_FILE_SIZE)
-        .addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Display file content based on its type (e.g., PDF viewer)
-            }
-        })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle download failure (e.g., Toast message)
-            }
-        });
-    
-
-        // Download file to a temporary location (consider permissions)
-    /*
-    File localFile = ...; // Create temporary file*/
-        File localFile = null;
-        storageRef.getFile(localFile)
-        .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                // Access file using localFile.getAbsolutePath() and display it
-            }
-        })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle download failure
-            }
-        });
-    
-    }
 
     ArrayList<MessageModel> messageModels;
     Context context;
@@ -149,11 +109,6 @@ public class ChatAdapter extends RecyclerView.Adapter{
                 ((SenderViewHold) holder).sendimg.setVisibility(View.VISIBLE);
                 holder.itemView.findViewById(R.id.sendertext).setVisibility(View.GONE);
                 Picasso.get().load(messageModel.getImageUri()).placeholder(R.drawable.image).into(((SenderViewHold) holder).sendimg);
-            }
-            if (messageModel.getMessage().equals("file")){
-                ((SenderViewHold) holder).sfile.setVisibility(View.VISIBLE);
-                holder.itemView.findViewById(R.id.sendertext).setVisibility(View.GONE);
-                downloadAndDisplayFile(messageModel.getDocUri(), ((SenderViewHold) holder).sfile);
             }
         }
         else {

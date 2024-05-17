@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.example.myapplication.Models.MessageModel;
 import com.example.myapplication.Models.Users;
@@ -238,52 +239,7 @@ public class ChatDetailActivity extends AppCompatActivity {
             }
         }
         else if (requestCode == 11 && data != null) {
-            if (data.getData() != null){
-                Uri selecteddoc = data.getData();
-                Calendar calendar = Calendar.getInstance();
-                // progressBar.show();
-                StorageReference reference = storage.getReference().child("chats").child(calendar.getTimeInMillis() + "");
-                reference.putFile(selecteddoc).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if (task.isSuccessful()){
-                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    // progressBar.dismiss();
-                                    String docPath = uri.toString();
-                                    String message = edtMsg.getText().toString();
-                                    final MessageModel model = new MessageModel(senderId,message);
-                                    model.setTimestamp(new Date().getTime());
-                                    model.setMessage("file");
-                                    model.setDocUri(docPath);
-                                    edtMsg.setText("");
-
-                                    database.getReference().child("chats")
-                                            .child(senderRoom)
-                                            .push()
-                                            .setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void unused) {
-                                                    database.getReference().child("chats")
-                                                            .child(receiverRoom)
-                                                            .push()
-                                                            .setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void unused) {
-
-                                                                }
-                                                            });
-                                                }
-                                            });
-                                    chatAdapter.notifyDataSetChanged();
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-
+            Toast.makeText(ChatDetailActivity.this,"open camera",Toast.LENGTH_SHORT).show();
         }
     }
 }
