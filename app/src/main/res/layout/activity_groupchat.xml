@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/gray"
+    android:layout_height="match_parent"
+    tools:context=".Groupchat">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/groupRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/liner2"
+        android:layout_below="@id/toolbar3">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/liner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtTextMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_10sdp"
+            android:layout_margin="2dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Enter Your Message"
+            android:inputType="text" />
+
+        <ImageView
+            android:id="@+id/send"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:src="@drawable/baseline_arrow_circle_right_24"/>
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:src="@drawable/baseline_arrow_back_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/profilePic"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:tint="@color/white" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profilePic"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
+                android:src="@drawable/image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toStartOf="@id/imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Group"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.096"
+                app:layout_constraintStart_toEndOf="@+id/profilePic"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+
+            <ImageView
+                android:id="@+id/menubtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/menupic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.956"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+</RelativeLayout>
