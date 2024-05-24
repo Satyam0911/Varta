@@ -16,7 +16,7 @@ Prerequisites:
 
 Installation:
 1. Clone the repo:
-   git clone https://github.com/yourusername/repo-name.git
+   git clone https://github.com/Satyam0911/Varta.git
 2. Open the project in Android Studio.
 3. Set up Firebase in your project:
    - Create a new project in Firebase.
@@ -44,7 +44,7 @@ Contributions are what make the open source community such an amazing place to l
 
 Contact:
 Your Name - satyamgup037@gmail.com
-Project Link: https://github.com/yourusername/repo-name
+Project Link:https://github.com/Satyam0911/Varta.git
 
 Acknowledgements:
 - Special thanks to the Firebase team for their amazing tools.
