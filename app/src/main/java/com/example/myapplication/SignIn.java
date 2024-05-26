@@ -36,12 +36,6 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("643225218443-s27obs5i5b99qqu8fele5todfh0eieek.apps.googleusercontent.com")
-                .requestEmail()
-                .build();
-        GoogleSignInClient googleSignInclient = GoogleSignIn.getClient(this,googleSignInOptions);
-        //getActionBar().hide();
 
         progressDialog = new ProgressDialog(SignIn.this);
         progressDialog.setTitle("Login");
@@ -92,14 +86,5 @@ public class SignIn extends AppCompatActivity {
             Intent intent = new Intent(SignIn.this, MainActivity.class);
             startActivity(intent);
         }
-//        binding.btngoogle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent signInClient = googleSignInclient.getSignInIntent();
-//                startActivity(signInClient);
-//                startActivity( new Intent(SignIn.this,MainActivity.class));
-//            }
-//        });
-
     }
 }

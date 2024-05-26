@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,8 +36,10 @@ import com.google.firebase.storage.UploadTask;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 import Adapter.ChatAdapter;
@@ -47,7 +51,8 @@ public class ChatDetailActivity extends AppCompatActivity {
     FirebaseAuth auth;
     TextView userName;
     ProgressDialog progressBar;
-    ImageView send,video,call,menu,backArrow,sendImg,sendDoc;
+
+    ImageView send,menu,backArrow,sendImg,sendDoc,video,call;
     CircularImageView profileimg;
     RecyclerView chatrecycle;
     EditText edtMsg;
@@ -66,8 +71,6 @@ public class ChatDetailActivity extends AppCompatActivity {
       //  binding = ActivityChatDetailBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_chat_detail);
 
-        video = findViewById(R.id.videoCall);
-        call = findViewById(R.id.callbtn);
         send = findViewById(R.id.send);
         profileimg = findViewById(R.id.profilePic);
         menu = findViewById(R.id.menubtn);
@@ -75,6 +78,8 @@ public class ChatDetailActivity extends AppCompatActivity {
         edtMsg = findViewById(R.id.edtTextMsg);
         sendImg = findViewById(R.id.sendImg);
         sendDoc = findViewById(R.id.sendDoc);
+        video = findViewById(R.id.videoCall);
+        call = findViewById(R.id.callbtn);
         storage = FirebaseStorage.getInstance();
 
         progressBar = new ProgressDialog(ChatDetailActivity.this);
@@ -102,22 +107,13 @@ public class ChatDetailActivity extends AppCompatActivity {
             }
         });
 
-        sendImg.setOnClickListener(new View.OnClickListener() {
+        sendDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");   //*/* for all
                 startActivityForResult(intent,25);
-            }
-        });
-        sendDoc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(intent,11);
             }
         });
 
@@ -152,7 +148,7 @@ public class ChatDetailActivity extends AppCompatActivity {
 
                             }
                         });
-
+        
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,4 +238,5 @@ public class ChatDetailActivity extends AppCompatActivity {
             Toast.makeText(ChatDetailActivity.this,"open camera",Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -57,33 +57,6 @@ public class SignUp extends AppCompatActivity {
         txtSin = findViewById(R.id.txtSin);
 
 
-
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("643225218443-s27obs5i5b99qqu8fele5todfh0eieek.apps.googleusercontent.com")
-                .requestEmail()
-                .build();
-//        BeginSignInRequest signInRequest = BeginSignInRequest.builder()
-//                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-//                        .setSupported(true)
-//                        // Your server's client ID, not your Android client ID.
-//                        .setServerClientId(getString("643225218443-s27obs5i5b99qqu8fele5todfh0eieek.apps.googleusercontent.com"))
-//                        // Only show accounts previously used to sign in.
-//                        .setFilterByAuthorizedAccounts(true)
-//                        .build())
-//                .build();
-
-        GoogleSignInClient googleSignInclient = GoogleSignIn.getClient(this,googleSignInOptions);
-
-
-        bgoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInClient = googleSignInclient.getSignInIntent();
-                startActivity(signInClient);
-                startActivity( new Intent(SignUp.this,MainActivity.class));
-            }
-        });
-
         progressDialog = new ProgressDialog(SignUp.this);
         progressDialog.setTitle("Creating Account");
         progressDialog.setMessage("We're Creating your account");
@@ -122,12 +95,4 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
-
-//    private void signInWithGoogle(GoogleSignInOptions gso) {
-//        Intent signInIntent = new GoogleSignInIntentBuilder(GoogleSignInIntent.ACTION_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id)) // Replace with your web client ID
-//                .fromGoogleSignInOptions(gso)
-//                .build();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
-//    }
 }

@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/gray">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:src="@drawable/appicon" />
+            android:src="@drawable/logo" />
 
         <EditText
             android:id="@+id/edtuserName"
