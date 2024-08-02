@@ -7,6 +7,8 @@ Features:
 - Last Message Preview: Get a glimpse of your recent conversations right from the chat list.
 - Image Sharing: Send images in chat for a richer communication experience.
 
+![WhatsApp Image 2024-08-02 at 14 40 06_237f1c27](https://github.com/user-attachments/assets/85e10f41-07de-408d-9f16-c4d9adecd077)
+
 Getting Started:
 To get a local copy up and running follow these simple steps:
 
@@ -21,7 +23,8 @@ Installation:
 3. Set up Firebase in your project:
    - Create a new project in Firebase.
    - Register your app with Firebase and add the google-services.json file to your project.
-   - Follow the Firebase setup instructions to enable Firestore and Authentication.
+   - Follow the Firebase setup instructions to enable Firestore a
+nd Authentication.
 4. Build and run the app on your emulator or device.
 
 Usage:
